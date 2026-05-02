@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neyveli Home - Feedback Portal</title>
+    <style>
+.nav-logo a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo a:hover {
+    opacity: 0.8; /* Adds a slight fade effect when you hover over it */
+}
+        /* CSS STYLING */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f1f3f6;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #003a7d; /* Matching the dark blue in the image */
+            color: white;
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .nav-logo span {
+            margin-right: 8px;
+        }
+
+        .nav-right {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* Layout Container */
+        .container {
+            display: flex;
+            justify-content: center;
+            padding: 50px 20px;
+        }
+
+        /* The Feedback Form Card */
+        .feedback-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 700px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-top: 5px solid #003a7d;
+        }
+
+        .header-text {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header-text h1 {
+            color: #2d5a27; /* Dark Green from image */
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .header-text p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Form Grid */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #444;
+        }
+
+        input, select, textarea {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline-color: #003a7d;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            width: 100%;
+            background-color: #003a7d;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: #002a5a;
+        }
+
+        /* Responsive - Single column on mobile */
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .feedback-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <div class="nav-logo">
+        <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+            <span>🏠</span> Neyveli 
+        </a>
+    </div>
+    <div class="nav-right">
+        NLC India Ltd. Community Portal
+    </div>
+</nav>
+    <div class="container">
+        <div class="feedback-card">
+            <div class="header-text">
+                <h1>Township Management Feedback</h1>
+                <p>Neyveli Township Administration & Civic Services</p>
+            </div>
+
+            <form id="feedbackForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Employee/Resident Name</label>
+                        <input type="text" id="residentName" placeholder="Enter name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>CPF / Resident ID</label>
+                        <input type="text" id="residentId" placeholder="Optional">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Block Number</label>
+                        <select id="blockNumber">
+                            <option value="Block 1">Block 1</option>
+                            <option value="Block 2" selected>Block 2</option>
+                            <option value="Block 3">Block 3</option>
+<option value="Block 4">Block 24</option>
+<option value="Block 5">Block 20</option>
+<option value="Block 6">Block 6</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Issue Category</label>
+                        <select id="issueCategory">
+                            <option value="Water Supply" selected>Water Supply</option>
+                            <option value="Electricity">Electricity</option>
+                            <option value="Civil Works">Civil Works</option>
+                            <option value="Sanitation">Sanitation</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 25px;">
+                    <label>Detailed Feedback</label>
+                    <textarea id="feedbackDetails" placeholder="Please describe your concern in detail..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Submit to TA Office</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevents the page from refreshing
+
+            // Get form data
+            const name = document.getElementById('residentName').value;
+            const category = document.getElementById('issueCategory').value;
+
+            // Simple Alert Logic
+            alert(`Thank you, ${name}! Your feedback regarding ${category} has been submitted to the TA Office.`);
+            
+            // Optionally clear the form
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>

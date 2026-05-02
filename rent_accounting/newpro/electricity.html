@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLC India Ltd | Employee Portal</title>
+    <style>
+        :root {
+            --nlc-blue: #004a99;
+            --nlc-gold: #ffcc00;
+            --light-gray: #f4f7f6;
+            --text-main: #333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: var(--nlc-blue);
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-left { flex: 1; display: flex; justify-content: flex-start; }
+        .logo { flex: 2; text-align: center; font-size: 1.5rem; font-weight: bold; letter-spacing: 1px; }
+        .nav-right { flex: 1; display: flex; justify-content: flex-end; }
+        .nav-left a { color: white; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.9rem; }
+        .nav-left a:hover { color: var(--nlc-gold); }
+
+        /* --- LANDSCAPE GALLERY BANNER --- */
+        .hero-gallery {
+            position: relative;
+            height: 500px;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 5px solid var(--nlc-gold);
+        }
+
+        .gallery-slider {
+            position: absolute;
+            display: flex;
+            width: 400%; /* 4 slides = 400% width */
+            height: 100%;
+            animation: slideGallery 20s infinite;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        /* Overlay to ensure text visibility */
+        .slide::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 42, 87, 0.45); 
+        }
+
+        /* ADD YOUR PICTURES HERE */
+        /* Replace 'your-image-x.jpg' with your actual file names */
+        .slide:nth-child(1) { background-image: url('one.jpg'); } 
+        .slide:nth-child(2) { background-image: url('three.jpg'); } 
+        .slide:nth-child(3) { background-image: url('f3.jpg'); } 
+        .slide:nth-child(4) { background-image: url('f4.jpg'); }
+
+        @keyframes slideGallery {
+            0% { left: 0%; }
+            20% { left: 0%; }
+            25% { left: -100%; }
+            45% { left: -100%; }
+            50% { left: -200%; }
+            70% { left: -200%; }
+            75% { left: -300%; }
+            95% { left: -300%; }
+            100% { left: 0%; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-content h1 { 
+            font-size: 3rem; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+        }
+        
+        .hero-content p { 
+            font-size: 1.3rem; 
+            font-weight: 500; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        /* Content Container */
+        .container {
+            max-width: 1100px;
+            margin: -40px auto 50px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 20;
+        }
+
+        .section-card {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--nlc-blue);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--nlc-gold);
+            display: inline-block;
+        }
+
+        /* Table Design */
+        .table-wrapper { overflow-x: auto; margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; background: #fff; }
+        th { background-color: #f8f9fa; color: var(--nlc-blue); font-weight: bold; text-transform: uppercase; font-size: 0.9rem; }
+        th, td { padding: 15px; border: 1px solid #dee2e6; text-align: left; }
+        tr:nth-child(even) { background-color: #fcfcfc; }
+        tr:hover { background-color: #fff9e6; }
+        .free-tier { color: #28a745; font-weight: bold; }
+        .warning-tier { color: #dc3545; font-weight: bold; }
+
+        /* Grid for details */
+        .details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
+        .detail-item { background: #fdfdfd; border-left: 5px solid var(--nlc-blue); padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .detail-item h3 { color: var(--nlc-blue); margin-bottom: 10px; font-size: 1.1rem; }
+
+        footer { background: #222; color: #bbb; text-align: center; padding: 30px; font-size: 0.9rem; }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-left">
+        <a href="index.html">Home</a>
+    </div>
+    <div class="logo">NLC INDIA LIMITED</div>
+    <div class="nav-right"></div>
+</nav>
+
+<div class="hero-gallery">
+    <div class="gallery-slider">
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+    </div>
+    <div class="hero-content">
+        <h1>Electricity Services</h1>
+        <p>Neyveli Township Administration & Residential Power Management</p>
+    </div>
+</div>
+
+<div class="container">
+    <section id="electricity" class="section-card">
+        <h2>Electricity Charges (Domestic)</h2>
+        <p>As per the NLC India Limited employee policy, the following rates are applicable for domestic consumption in Neyveli Quarters:</p>
+        
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sl.No</th>
+                        <th>Unit Range</th>
+                        <th>Rate per Unit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Up to 50 Units</td><td class="free-tier">FREE</td></tr>
+                    <tr><td>2</td><td>51 to 125 Units</td><td>10 Paise</td></tr>
+                    <tr><td>3</td><td>126 to 200 Units</td><td>15 Paise</td></tr>
+                    <tr><td>4</td><td>Above 200 Units</td><td class="warning-tier">Selling rate to TNEB</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="rules" class="section-card">
+        <h2>Neyveli Township Specifics</h2>
+        <div class="details-grid">
+            <div class="detail-item">
+                <h3>Direct Salary Recovery</h3>
+                <p>Electricity charges are automatically calculated by the Township Administration and recovered from the monthly salary through the Pay & Accounts department.</p>
+            </div>
+            <div class="detail-item">
+                <h3>High Consumption Clause</h3>
+                <p>To promote energy conservation in the colony, any consumption exceeding 200 units is billed at the industrial selling rate provided to TNEB.</p>
+            </div>
+            <div class="detail-item">
+                <h3>Maintenance Support</h3>
+                <p>For meter reading discrepancies or electrical faults in quarters, employees should contact their respective Block Electrical Maintenance Unit.</p>
+            </div>
+            <div class="detail-item">
+                <h3>Policy Revision</h3>
+                <p>These rates are welfare-based and subject to periodic revision by NLC Management based on power generation costs and TNEB agreements.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2026 NLC India Limited - Neyveli Township. All Rights Reserved.</p>
+    <p>For Internal Use Only</p>
+</footer>
+
+</body>
+</html>

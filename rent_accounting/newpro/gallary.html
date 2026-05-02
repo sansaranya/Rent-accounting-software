@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLC India Ltd | Image Gallery</title>
+    <style>
+        :root {
+            --nlc-blue: #004a99;
+            --nlc-gold: #ffcc00;
+            --light-gray: #f4f7f6;
+            --text-main: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--light-gray);
+            margin: 0;
+            color: var(--text-main);
+        }
+
+        /* Header Styling */
+       header {
+    position: relative; /* Acts as an anchor for the home link */
+    background-color: var(--nlc-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 5px solid var(--nlc-gold);
+}
+
+.back-link {
+    position: absolute; /* Positions it independently */
+    top: 20px;
+    left: 20px;
+    color: var(--nlc-gold);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    border: 1px solid var(--nlc-gold);
+    padding: 5px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    background-color: var(--nlc-gold);
+    color: var(--nlc-blue);
+}
+
+        /* Gallery Grid */
+        .gallery-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background: white;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Image Caption */
+        .caption {
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--nlc-blue);
+            background: white;
+        }
+
+        footer {
+            background: #222;
+            color: #bbb;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Neyveli Township & Infrastructure Gallery</h1>
+        <p>Visual Highlights of NLC India Limited</p>
+        <a href="index.html" class="back-link">home</a>
+    </header>
+
+    <div class="gallery-container">
+        <div class="gallery-item">
+            <img src="g1.jpg" alt="Thermal Power Station">
+            <div class="caption">Thermal Power Station (TPS)</div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="g2.jpg" alt="Mines Area">
+            <div class="caption">Lignite Mine Excavation</div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="g3.jpg" alt="Solar Farm">
+            <div class="caption">Renewable Energy: Solar Farm</div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="f3.jpg" alt="Township Parks">
+            <div class="caption">Neyveli Greenery & Parks</div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="n1.jpg" alt="Afforstration">
+            <div class="caption">Residential Quarters Layout</div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="g5.png" alt="Main Office">
+            <div class="caption">Corporate Office Entrance</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 NLC India Limited. Internal Visual Archive.</p>
+    </footer>
+
+</body>
+</html>

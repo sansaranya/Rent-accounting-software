@@ -1,0 +1,255 @@
+/* Display dropdown on hover */
+.navbar-nav li.dropdown:hover > .dropdown-menu {
+    display: block;
+    margin-top: 0; /* Remove gap so it doesn't close when moving mouse down */
+}
+
+/* Optional: Style the dropdown menu to match your theme */
+.dropdown-menu {
+    background-color: blue; /* Matches navbar-inverse */
+    border: none;
+    border-radius: 0;
+}
+
+.dropdown-menu > li > a {
+    color: #fff !important;
+    padding: 10px 20px;
+}
+
+.dropdown-menu > li > a:hover {
+    background-color: #f89406; /* Matches your "Read More" button color */
+    color: #fff !important;
+}/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+/* --- Shared Navigation Styles --- */
+.navbar {
+    background-color: #2c3e50; /* Dark professional blue */
+    padding: 15px 0;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: #27ae60; /* Neyveli Green highlight */
+}
+
+/* --- GLOBAL BACKGROUND SETUP --- */
+body {
+    background: linear-gradient(rgba(1, 81, 134, 0.5), rgba(1, 81, 134, 0.5)), 
+                url('transparent_image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* --- UPDATED HEADER (OFFICIAL STYLE) --- */
+.glass-logo-area {
+    background: rgba(0, 0, 0, 0.3) !important; /* Slightly darker glass for better text contrast */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 10px 30px; /* Padding for the sides */
+}
+
+.header-flex-wrapper {
+    display: flex;
+    justify-content: space-between; /* Pushes Logo to Left, Nav to Right */
+    align-items: center;
+    width: 100%;
+}
+
+/* Logo Section Styles */
+.header-logo-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo Section Styles - Updated to keep original colors */
+.logo-img {
+    height: 70px; /* Adjusted height to make the text "Creating Wealth..." readable */
+    width: auto;
+    margin-right: 15px;
+    /* Filter removed to keep original blue/white logo colors */
+    display: block; 
+}
+
+/* Optional: Add a small border radius or shadow if the white box looks too sharp */
+.logo-img {
+    border-radius: 2px;
+}
+
+.nlc-title {
+    margin: 0;
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.navratna-text {
+    margin: 0;
+    color: #fff;
+    font-size: 11px;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.township-title {
+    margin: 0;
+    color: #f1f1f1;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/* Utility/Navigation Section Styles */
+.top-nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between the links */
+    margin: 0;
+    padding: 0;
+}
+
+.top-nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.top-nav-links li a:hover {
+    color: #f89406; /* NLC Gold color on hover */
+}
+
+/* Updated Skip Button */
+.skip-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.5);
+    color: white;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.skip-btn:hover {
+    background: white;
+    color: #333;
+}
+
+/* Language Dropdown */
+.glass-select {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 2px 5px;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.glass-select option {
+    color: #333;
+}
+
+/* --- SERVICES SECTION --- */
+.services-section {
+    background-color: transparent;
+    text-align: center;
+    padding: 60px 0;
+}
+
+.services-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: nowrap;
+}
+
+
+
+/* --- NEWS & HIGHLIGHTS --- */
+.news-ticker {
+    background: rgba(255, 255, 255, 0.2); 
+    backdrop-filter: blur(5px);
+    color: #fff; 
+    padding: 10px;
+    font-weight: bold;
+}
+
+.about-highlights {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    padding: 30px;
+    border-radius: 15px;
+    border-top: 5px solid #f89406;
+    color: white;
+}
+
+/* --- FOOTER --- */
+.glass-footer {
+    background: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 40px 0 20px;
+    color: white;
+}
+
+/* --- RESPONSIVE LOGIC --- */
+@media (max-width: 992px) {
+    .header-flex-wrapper {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    .top-nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .services-wrapper {
+        flex-wrap: wrap;
+    }
+}/* Your original styling moved to the CSS file */
+#navbar {
+    background-color: rgba(1, 81, 134, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 0;
+    margin-bottom: 0;
+    border: none;
+    width: 100%;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+#navbar .nav li a {
+    color: white !important; /* Ensures the text stays white */
+}
+
+/* This class is added by JavaScript on scroll */
+.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(1, 81, 134, 0.9) !important; /* Slightly more solid when scrolling */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}

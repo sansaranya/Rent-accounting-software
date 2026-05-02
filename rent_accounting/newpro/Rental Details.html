@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Details</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f8f9fa; padding: 20px; color: #333; }
+        .container { max-width: 1100px; margin: auto; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        
+        .header { border-bottom: 2px solid #28a745; margin-bottom: 20px; padding-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .home-link { text-decoration: none; color: #28a745; font-weight: bold; }
+
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; display: none; }
+        table.active { display: table; }
+        th, td { border: 1px solid #dee2e6; padding: 12px; text-align: left; }
+        th { background-color: #343a40; color: white; text-transform: uppercase; font-size: 13px; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+
+        /* Navigation at Bottom */
+        .bottom-nav { display: flex; gap: 10px; margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee; }
+        .tab-btn { padding: 12px 24px; cursor: pointer; border: none; background: #e0e0e0; border-radius: 6px; font-weight: bold; color: #333; transition: 0.3s; }
+        .tab-btn.active { background: #28a745; color: white; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1 style="margin:0;">RENTAL DETAILS</h1>
+        <a href="index.html" class="home-link">HOME</a>
+ <a href="#" class="home-link">quarters allotment </a>
+    </div>
+
+    <table id="table1" class="active">
+        <thead>
+            <tr>
+                <th>SNO</th>
+                <th>ID</th>
+                <th>Type / Building Name</th>
+                <th>types of allotment</th>
+                <th>water</th>
+                <th> House Rent ($)</th>
+                <th>Electricity</th>
+            </tr>
+        </thead>
+        <tbody id="body1"></tbody>
+    </table>
+
+    <table id="table2">
+        <thead>
+            <tr>
+                <th>SNO</th>
+                <th>ID</th>
+                <th>Type / Building Name</th>
+                <th>types of allotment</th>
+                <th>BHK</th>
+                <th>Rent ($)</th>
+                <th>Metric</th>
+            </tr>
+        </thead>
+        <tbody id="body2"></tbody>
+    </table>
+
+    <div class="bottom-nav">
+        <button id="btn1" class="tab-btn active" onclick="showPage(1)">Page 1: Entries 1-44</button>
+        <button id="btn2" class="tab-btn" onclick="showPage(2)">Page 2: Entries 45-88</button>
+    </div>
+</div>
+
+<script>
+    // Data extracted exactly from provided files 
+    const sno=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88];
+    const ids = [10,100,105,110,115,115,120,120,125,125,15,20,200,205,210,215,220,225,230,235,240,245,246,25,250,255,256,260,260,265,265,270,270,275,275,280,285,290,295,30,300,305,310,310,315,320,35,40,400,405,42,45,5,50,500,500,505,505,510,510,515,515,516,520,520,55,60,600,605,65,70,700,705,710,75,80,80,800,805,810,810,815,820,825,85,90,90,95];
+    const types = ["TYPE-A","FA/BL-4","FLY.ASH","SAINIK BKS","408-QTRZ","408-QTRS","HOSTL.TYPE","HOSTL.TYPE","HOSTL.TYPE","HOSTL.TYPE","TYPE-C","TYPE-D","TYPE-G/TC","TYPE-J/TC","TYPE-J/TC","TYPE-K/TC","TYPE-L/TC","TYPE-M/TC","TYPE-M/TC","TYPE-N/TC","TYPE-P/TC","TYPE-R/TC","TC-R/BKS","TYPE-E","TYPE-S/TC","TYPE-JE","TYPE-JGO","TYPE-AE-1","TYPE-AE-1","TYPE-AE-2","TYPE-AE-2","TYPE-AE-3","TYPE-AE-3","TY-EE1,3&4","TY-EE1,3&4","TY-EE2-D","SAINIK QTR","TYPE-T&W-B","TYPE-T&W-D","TYPE-F","TYPE-NQ/M","TYPE-DB/A","HOS.TYPE","HOS.TYPE","TY-SI-QRS","POLICE QRS","TYPE-G","TYPE-H","LCH","TKC-MUD/AC","TAISHA-CHN","TYPE-J","TYPE-A","TYPE-K","SM-HOSTEL","SM-HOSTEL","SH-BL2/KIT","SH-BL2/KIT","BEH/BL-6","BEH/BL-6","BEH/BL-17S","BEH/BL-17S","BEH/BL-17D","TR.H/BL-27","TR.H/BL-27","TYPE-Z","NQ(GH)NEW","PLOT","PLOT/EXTND","NQ(GH)OLD","GQTRS/CO","CC-X","CC-Y","CC-Z","TYPE-I","TYPE-II","TYPE-II","VH/BL-27/N","VH-BL-27/O","EX.H/BL-20","EX.H/BL-20","QAMB SHOPS","R.H-II/A","TR.H/BL-27","TYPE-III","TYPE-IV","TYPE-IV","LCH"];
+    const status = [0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0];
+    const bhk = [2,2,2,1.5,3,1,1,3,1,3,2,3,4,2,2,3,2,2,2,2,2,1.5,1.5,4,2,4,4,5,1,5,1,5,1,6,1,3,1.5,2,3,5,2,1.5,3,1,0,0,6,8,1.5,1.5,8,8,1.5,8,1,1,1,1,1,2,1,2,2,0,0,1,3,0,0,3,1.5,2,2,1.5,3,4,1,0,0,1,5,0,1.5,5,5,1,6,1.5];
+    const rent = [300,300,300,260,360,40,40,360,40,360,360,400,360,260,260,300,260,260,260,260,200,200,200,480,200,480,480,600,15,600,15,600,15,170,15,60,200,40,60,600,260,260,360,40,0,0,1240,1300,200,200,1300,1600,260,2260,260,20,30,20,30,360,30,360,100,360,35,260,360,160,160,360,260,360,300,300,360,480,50,0,0,34.5,600,0,30,100,600,0,1240,200];
+    const metrics = [70.25,20.25,60.25,60.25,90.25,15,15,90.25,15,90.25,80.25,80.25,40.25,20.25,20.25,60.25,60.25,60.25,60.25,60.25,60.25,60.25,60.25,130.25,60.25,100.25,40.25,50.75,15,50.75,15,50.75,15,51,15,30.25,20.25,20.25,30.25,150.75,30.25,20.25,60.25,15,0,10,181,181,20.25,20.25,181,61,70.25,61.25,15,15,15,15,15,15,15,15,15,0,0,60.25,60.25,0,0,20.25,20.25,60.25,60.25,60.25,90.25,120.25,15,0,0,15,150.75,0,20.25,50.75,150.75,15,176,60.25];
+
+    function loadData() {
+        const b1 = document.getElementById('body1');
+        const b2 = document.getElementById('body2');
+        for(let i=0; i < sno.length; i++) {
+            const row = `<tr>
+                <td>${sno[i]}</td>
+                <td>${ids[i]}</td>
+                <td>${types[i]}</td>
+                <td>${status[i]}</td>
+                <td>${bhk[i]}</td>
+                <td>${rent[i]}</td>
+                <td>${metrics[i]}</td>
+            </tr>`;
+            if(i < 44) b1.innerHTML += row;
+            else b2.innerHTML += row;
+        }
+    }
+
+    function showPage(num) {
+        document.getElementById('table1').className = num === 1 ? 'active' : '';
+        document.getElementById('table2').className = num === 2 ? 'active' : '';
+        document.getElementById('btn1').className = num === 1 ? 'tab-btn active' : 'tab-btn';
+        document.getElementById('btn2').className = num === 2 ? 'tab-btn active' : 'tab-btn';
+        window.scrollTo(0,0); // Scrolls back to top when page changes
+    }
+
+    loadData();
+</script>
+
+</body>
+</html>
